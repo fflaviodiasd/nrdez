@@ -8,6 +8,7 @@ router = routers.DefaultRouter()
 router.register('company', CompanyViewSet, basename='Company')
 router.register('equipment', EquipmentViewSet, basename='Equipment')
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls))
