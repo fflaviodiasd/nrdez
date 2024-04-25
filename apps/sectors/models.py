@@ -9,4 +9,4 @@ class Sector(models.Model):
     company = models.ForeignKey(Company, related_name='setores', on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return self.name
+        return self.nome

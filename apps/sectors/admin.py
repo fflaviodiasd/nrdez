@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Sector
+
+class SectorAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nome', 'company',)
+    list_display_links = ('id', 'nome', 'company',)
+
+admin.site.register(Sector, SectorAdmin)

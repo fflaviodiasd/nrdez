@@ -5,11 +5,12 @@ from django.db import models
 from apps.sectors.models import Sector
 from apps.accounts.models import CustomUser
 from apps.companies.models import Company
+from apps.accounts.services import isEmployee
 
 
 
 class GenericProfile(models.Model):
-    usuario = models.OneToOneField(CustomUser, null=True, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(CustomUser, null=True, on_delete=models.CASCADE, related_name='profile')
     nome = models.CharField(max_length=100)
     cpf = models.CharField(max_length=14, null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
