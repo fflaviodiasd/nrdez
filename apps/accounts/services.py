@@ -8,6 +8,14 @@ from core.settings import AUTH_USER_MODEL
 from .exceptions import UserComapanyNotFound
 
 
+def verifyLicense(user: AUTH_USER_MODEL) -> bool:
+    if isAdministrator(user):
+        return
+
+    profile = get_profile(user.profile, user.type)
+    hasCompany(profile)
+
+
 def hasCompany(profile) -> bool:
     if profile.company == None or profile.company == '':
         raise UserComapanyNotFound()
@@ -24,6 +32,18 @@ def isEmployee(user: AUTH_USER_MODEL):
 def get_profile(generic_profile, type):
     if type == 1:
         return generic_profile.administrador
+
+    def make_username(name):
+        name = remove_accents(name)
+        name_list = name.split(' ')
+        last_name = name_list.pop(-1)
+        initial_names = [n[0] for n in name_list[:2]]
+        initial_names.extend([last_name, str(uuid.uuid4().hex)[:4]])
+        return ''.join(initial_names).lower()
+
+    def format_number(number, decimal_places):
+        format = "{:.%df}" % decimal_places
+        return format.format(number)
 
     if type == 2:
         return generic_profile.employee

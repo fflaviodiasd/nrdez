@@ -41,8 +41,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'django_extensions',
+    'import_export',
+    'drf_yasg',
+    'pytz',
+    'django_filters',
+    'corsheaders',
+    'django_rest_passwordreset',
+    'django_crontab',
     'rest_framework',
-
+    'rest_framework_swagger',
+    'rest_framework_nested',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt.token_blacklist',
     'apps.accounts',
     'apps.companies',
     'apps.equipment',
@@ -132,3 +144,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL= 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
